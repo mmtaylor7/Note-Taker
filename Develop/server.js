@@ -62,12 +62,17 @@ app.post("/api/notes", (req, res) => {
           "./db/db.json",
           JSON.stringify(convertedNotes, null, 4),
           (writeErr) =>
-            writeErr ? console.error(writeErr) : console.info("Updated note!")
+            writeErr ? console.error(writeErr) : console.info("Updated notes!")
         );
       }
     });
   }
 });
+
+const response = {
+  status: "success",
+  body: newNote,
+};
 
 //app is listening on port variable 4200 defined at top
 app.listen(PORT, () => console.log(`Listening at ${PORT}`));
