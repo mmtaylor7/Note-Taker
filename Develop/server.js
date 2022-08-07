@@ -59,6 +59,7 @@ app.post("/api/notes", (req, res) => {
         //add the new note
         convertedNotes.push(newNote);
 
+        //writing the updated notes into the html
         fs.writeFile(
           "./db/db.json",
           JSON.stringify(convertedNotes, null, 4),
