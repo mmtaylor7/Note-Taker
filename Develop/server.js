@@ -12,10 +12,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
-//get for index.html main page
-app.get("/", (req, res) =>
-  res.sendFile(path.join(__dirname, "/public/index.html"))
-);
 //get for notes.html notetaker page
 app.get("/notes", (req, res) => {
   console.log(__dirname);
@@ -26,13 +22,23 @@ app.get("/notes", (req, res) => {
 app.get("/api/notes", (req, res) => {
   fs.readFile("./db/db.json", "utf-8", (error, data) => {
     if (error) {
-      console.error(error);
+      console.error("There is an error");
       return;
     } else {
-      res.json(JSON.parse(data));
+      return res.json(JSON.parse(data));
     }
   });
 });
 
+app.post("/api/notes", (req, res) => {
+  console.log("api/notes app.post ");
+  res.send("POST Request Called");
+});
+
 //app is listening on port variable 4200 defined at top
 app.listen(PORT, () => console.log(`Listening at ${PORT}`));
+
+//get for index.html main page
+app.get("*", (req, res) =>
+  res.sendFile(path.join(__dirname, "/public/index.html"))
+);
