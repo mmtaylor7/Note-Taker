@@ -48,6 +48,14 @@ app.post("/api/notes", (req, res) => {
       text,
       id: uniqueID(),
     };
+    //grab notes that have bene created
+    fs.readFile("./db/db.json", "utf8", (error, data) => {
+      if (error) {
+        console.error(error);
+      } else {
+        const convertedNotes = JSON.parse(data);
+      }
+    });
   }
 });
 
