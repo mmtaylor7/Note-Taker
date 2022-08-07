@@ -5,6 +5,7 @@ const { get } = require("http");
 const router = require("express").Router();
 //import npm package uniqid in rde to give each note a unique id when its saved
 const uniqueID = require("uniqid");
+const e = require("express");
 
 const PORT = 4200;
 
@@ -68,11 +69,6 @@ app.post("/api/notes", (req, res) => {
     });
   }
 });
-
-const response = {
-  status: "success",
-  body: newNote,
-};
 
 //app is listening on port variable 4200 defined at top
 app.listen(PORT, () => console.log(`Listening at ${PORT}`));
