@@ -58,7 +58,12 @@ app.post("/api/notes", (req, res) => {
         //add the new note
         convertedNotes.push(newNote);
 
-        fs.writeFile;
+        fs.writeFile(
+          "./db/db.json",
+          JSON.stringify(convertedNotes, null, 4),
+          (writeErr) =>
+            writeErr ? console.error(writeErr) : console.info("Updated note!")
+        );
       }
     });
   }
