@@ -3,6 +3,8 @@ const path = require("path");
 const fs = require("fs");
 const { get } = require("http");
 const router = require("express").Router();
+//import npm package uniqid in rde to give each note a unique id when its saved
+const uniqueID = require("uniqid");
 
 const PORT = 4200;
 
@@ -35,7 +37,18 @@ app.get("/api/notes", (req, res) => {
 app.post("/api/notes", (req, res) => {
   console.info(`${req.method} request has been received to add note`);
 
-  const { title, text } = req.body;
+  const title = req.body.title;
+  const text = req.body.text;
+
+  //if title and text both exist
+  if (title && text) {
+    //then create a new note
+    const newNote = {
+      title,
+      text,
+      id: uniqueID(),
+    };
+  }
 });
 
 //app is listening on port variable 4200 defined at top
