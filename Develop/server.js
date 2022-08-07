@@ -22,5 +22,17 @@ app.get("/notes", (req, res) => {
   res.sendFile(path.join(__dirname, "/public/notes.html"));
 });
 
+//reading the db.json file and returning all saved notes as JSON
+app.get("/api/notes", (req, res) => {
+  fs.readFile("./db/db.json", "utf-8", (error, data) => {
+    if (error) {
+      console.error(error);
+      return;
+    } else {
+      res.json(JSON.parse(data));
+    }
+  });
+});
+
 //app is listening on port variable 4200 defined at top
 app.listen(PORT, () => console.log(`Listening at ${PORT}`));
