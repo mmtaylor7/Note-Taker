@@ -31,8 +31,9 @@ app.get("/api/notes", (req, res) => {
 });
 
 app.post("/api/notes", (req, res) => {
-  console.log("api/notes app.post ");
-  res.send("POST Request Called");
+  console.info(`${req.method} request has been received to add note`);
+
+  const { title, text } = req.body;
 });
 
 //app is listening on port variable 4200 defined at top
