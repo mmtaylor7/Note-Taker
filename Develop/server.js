@@ -30,6 +30,8 @@ app.get("/api/notes", (req, res) => {
   });
 });
 
+// post request to 'receive a new note to save on the request body, add it to the db.json file, and then return the new note to the client.'
+
 app.post("/api/notes", (req, res) => {
   console.info(`${req.method} request has been received to add note`);
 
