@@ -52,8 +52,13 @@ app.post("/api/notes", (req, res) => {
     fs.readFile("./db/db.json", "utf8", (error, data) => {
       if (error) {
         console.error(error);
+        //convert to JSON object
       } else {
         const convertedNotes = JSON.parse(data);
+        //add the new note
+        convertedNotes.push(newNote);
+
+        fs.writeFile;
       }
     });
   }
