@@ -7,7 +7,7 @@ const router = require("express").Router();
 const uniqueID = require("uniqid");
 const e = require("express");
 
-const PORT = 4200;
+const PORT = process.env.PORT || 4200;
 
 const app = express();
 
