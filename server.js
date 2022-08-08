@@ -64,7 +64,7 @@ app.post("/api/notes", (req, res) => {
           "./db/db.json",
           JSON.stringify(convertedNotes, null, 4),
           (writeErr) =>
-            writeErr ? console.error(writeErr) : console.info("Updated notes!")
+            writeErr ? console.error(writeErr) : res.sendStatus(200)
         );
       }
     });
